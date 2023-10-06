@@ -7,14 +7,19 @@ export default function WeatherPage() {
 
     const userLocation = () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((pos) => {
-                setLocation({
-                    latitude: pos.coords.latitude,
-                    longitude: pos.coords.longitude
-                });
-            });
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    setLocation({
+                        latitude: pos.coords.latitude,
+                        longitude: pos.coords.longitude
+                    });
+                },
+                (error) => {
+                    console.error("Error getting location:", error);
+                }
+            );
         } else {
-            console.log("Location cannot be found");
+            console.log("Geolocation is not supported by this browser.");
         }
     };
 

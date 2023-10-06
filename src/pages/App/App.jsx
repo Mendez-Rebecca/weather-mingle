@@ -9,10 +9,6 @@ import WeatherPage from '../WeatherPage/WeatherPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const location = {
-    label: 'Spokane, WA',
-    coordinates: [47.658779, -117.426048]
-  };
 
   return (
     <main className="App">
@@ -21,7 +17,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/weather" element={<WeatherPage location={location} />} />
+            <Route path="/weather" element={<WeatherPage />} />
           </Routes>
         </>
         :
