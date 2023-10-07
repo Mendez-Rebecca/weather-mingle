@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const APIkey = process.env.APIkey;
+const APIkey = process.env.REACT_APP_API_KEY;
 const getTimelineURL = "https://api.tomorrow.io/v4/timelines";
 
 module.exports = {
@@ -9,10 +9,8 @@ module.exports = {
 
 async function getWeatherData(req, res) {
     try {
-        const latitude = req.query.latitude; // Pass latitude as a query parameter
-        const longitude = req.query.longitude; // Pass longitude as a query parameter
-
-        // Define the query parameters
+        const latitude = req.query.latitude;
+        const longitude = req.query.longitude;
         const queryParams = {
             apikey: APIkey,
             location: `${latitude},${longitude}`,
@@ -24,17 +22,15 @@ async function getWeatherData(req, res) {
             timezone: "America/New_York"
         };
 
-        // Construct the URL with query parameters
         const url = `${getTimelineURL}?${new URLSearchParams(queryParams)}`;
+        // ${getTimelineURL}?location=${location.latitude},${location.longitude}&fields=temperature&timesteps=1h&units=metric&apikey=${APIKey}
 
-        // Make an HTTP GET request to the weather API using fetch
         const response = await fetch(url);
 
         if (!response.ok) {
             throw new Error(`Request failed with status: ${response.status}`);
         }
 
-        // Parse the JSON response
         const weatherData = await response.json();
         const latestTemperature = weatherData.data.timelines[0].intervals[0].values.temperature.value;
 

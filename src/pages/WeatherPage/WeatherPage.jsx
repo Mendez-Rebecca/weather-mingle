@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 
+const getTimelineURL = "https://api.tomorrow.io/v4/timelines";
+
 export default function WeatherPage() {
     const [temperature, setTemperature] = useState(null);
     const [location, setLocation] = useState({ latitude: null, longitude: null });
+
+    const APIKey = process.env.REACT_APP_API_KEY;
 
     const userLocation = () => {
         if (navigator.geolocation) {
@@ -19,7 +23,7 @@ export default function WeatherPage() {
                 }
             );
         } else {
-            console.log("Geolocation is not supported by this browser.");
+            console.log("Geolocation is not supported");
         }
     };
 
@@ -28,13 +32,15 @@ export default function WeatherPage() {
     }, []);
 
     useEffect(() => {
-        // Fetch weather data when location changes
         if (location.latitude && location.longitude) {
-            // Make a request to your backend to fetch weather data based on user's location
-            fetch(`/api/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
-                .then((response) => response.json())
+            fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&fields=temperature&timesteps=1h&units=metric&apikey=${APIKey}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Request failed with status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then((data) => {
-                    // Set the temperature data in the state
                     setTemperature(data.temperature);
                 })
                 .catch((error) => {
