@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import CurrentTemp from '../../components/CurrentTemp/CurrentTemp';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
+import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 
@@ -46,6 +47,11 @@ export default function WeatherPage() {
                         data.timelines.hourly[0].values.windSpeed,
                         data.timelines.hourly[0].values.dewPoint,
                         data.timelines.hourly[0].values.uvIndex,
+                        data.timelines.daily[1].values.weatherCodeMax,
+                        data.timelines.daily[2].values.weatherCodeMax,
+                        data.timelines.daily[3].values.weatherCodeMax,
+                        data.timelines.daily[4].values.weatherCodeMax,
+                        data.timelines.daily[5].values.weatherCodeMax
                     ])
                 })
                 .catch(error => {
@@ -59,6 +65,7 @@ export default function WeatherPage() {
             <h1>Weather App</h1>
             <CurrentTemp currentTemp={currentTemp} />
             <WeatherInfo weatherData={weatherData} />
+            <WeatherForecast forecast={weatherData} />
         </div>
     );
 };
