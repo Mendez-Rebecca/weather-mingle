@@ -54,8 +54,8 @@ export default function WeatherForecast({ forecast }) {
                 {forecastData.map((data, index) => (
                     <li key={index}>
                         Day {data.dayIndex}: {data.weatherStatus}{' '}
-                        (High Temp: {toFahrenheit(forecast[11 + index * 2]).toFixed(2)}°F /
-                        Low Temp: {toFahrenheit(forecast[12 + index * 2]).toFixed(2)}°F)
+                        (High Temp: {toFahrenheit(forecast[11 + index * 2]).toFixed(0)}°F /
+                        Low Temp: {toFahrenheit(forecast[12 + index * 2]).toFixed(0)}°F)
                     </li>
                 ))}
             </ul>
