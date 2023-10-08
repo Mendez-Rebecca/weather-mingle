@@ -17,12 +17,12 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/weather" element={<WeatherPage />} />
+            <Route path="/" element={<WeatherPage />} />
           </Routes>
         </>
         :
         <Routes>
-          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route path="/" element={<LoginPage setUser={setUser} />} />
           <Route path="/*" element={<AuthPage setUser={setUser} />} />
         </Routes>
       }

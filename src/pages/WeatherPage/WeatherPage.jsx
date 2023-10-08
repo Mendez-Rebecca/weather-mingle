@@ -3,6 +3,7 @@ import CurrentTemp from '../../components/CurrentTemp/CurrentTemp';
 import HiLoTemp from '../../components/HiLoTemp/HiLoTemp';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
+import pindrop from '../../images/pindrop.png';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
@@ -96,9 +97,11 @@ export default function WeatherPage() {
     }, [location]);
 
     return (
-        <div>
-            <h1>Weather App</h1>
-            <p>User's Location: {userAddress}</p>
+        <div className='WeatherPage'>
+            <div className='LocationContainer'>
+                <img src={pindrop} />
+                <p className='Location'>{userAddress}</p>
+            </div>
             <CurrentTemp currentTemp={currentTemp} />
             <HiLoTemp temps={weatherData} />
             <WeatherInfo weatherData={weatherData} />

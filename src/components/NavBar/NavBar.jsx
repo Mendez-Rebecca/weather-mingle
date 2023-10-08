@@ -8,7 +8,7 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
+    <nav className='Nav'>
       <Link to="/weather">View Weather</Link>
       &nbsp;&nbsp;
       <span>Welcome, {user.name}</span>

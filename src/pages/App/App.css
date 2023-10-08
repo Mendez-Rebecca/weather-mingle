@@ -1,5 +1,36 @@
+body,
+html {
+  background-color: #2c2f7c;
+}
+
 .App {
   text-align: center;
+}
+
+.Nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 5vmin;
+  margin-top: 5vmin;
+}
+
+.Location {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 1vmin;
+}
+
+.LocationContainer {
+  display: flex;
+  align-items: center;
+}
+
+.LocationContainer img {
+  margin-left: 5vmin;
+  width: 30px;
+  height: auto;
 }
 
 .App-logo {
@@ -32,6 +63,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
