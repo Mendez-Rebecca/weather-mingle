@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import CurrentTemp from '../../components/CurrentTemp/CurrentTemp';
+import HiLoTemp from '../../components/HiLoTemp/HiLoTemp';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 
@@ -39,6 +40,7 @@ export default function WeatherPage() {
             fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data)
                     setCurrentTemp(data.timelines.hourly[0].values.temperature);
                     setWeatherData([
                         data.timelines.hourly[0].values.humidity,
@@ -61,7 +63,9 @@ export default function WeatherPage() {
                         data.timelines.daily[4].values.temperatureMax,
                         data.timelines.daily[4].values.temperatureMin,
                         data.timelines.daily[5].values.temperatureMax,
-                        data.timelines.daily[5].values.temperatureMin
+                        data.timelines.daily[5].values.temperatureMin,
+                        data.timelines.daily[0].values.temperatureMax, /* 21 */
+                        data.timelines.daily[0].values.temperatureMin  /* 22 */
                     ])
                 })
                 .catch(error => {
@@ -74,6 +78,7 @@ export default function WeatherPage() {
         <div>
             <h1>Weather App</h1>
             <CurrentTemp currentTemp={currentTemp} />
+            <HiLoTemp temps={weatherData} />
             <WeatherInfo weatherData={weatherData} />
             <WeatherForecast forecast={weatherData} />
         </div>
