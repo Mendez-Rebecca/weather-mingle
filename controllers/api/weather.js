@@ -1,30 +1,18 @@
 const fetch = require("node-fetch");
 
 const APIkey = process.env.REACT_APP_API_KEY;
-const getTimelineURL = "https://api.tomorrow.io/v4/timelines";
+const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 
 module.exports = {
-    getWeatherData
+    index
 };
 
-async function getWeatherData(req, res) {
+async function index(req, res) {
     try {
         const latitude = req.query.latitude;
         const longitude = req.query.longitude;
-        const queryParams = {
-            apikey: APIkey,
-            location: `${latitude},${longitude}`,
-            fields: "temperature",
-            units: "imperial",
-            timesteps: ["current"],
-            startTime: new Date().toISOString(),
-            endTime: new Date().toISOString(),
-            timezone: "America/New_York"
-        };
 
-        const url = `${getTimelineURL}?${new URLSearchParams(queryParams)}`;
-        // ${getTimelineURL}?location=${location.latitude},${location.longitude}&fields=temperature&timesteps=1h&units=metric&apikey=${APIKey}
-
+        const url = `${getTimelineURL}?location=${latitude},${longitude}&apikey=${APIkey}`;
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -32,9 +20,8 @@ async function getWeatherData(req, res) {
         }
 
         const weatherData = await response.json();
-        const latestTemperature = weatherData.data.timelines[0].intervals[0].values.temperature.value;
 
-        res.json({ temperature: latestTemperature });
+        res.json({ weatherData });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred while fetching weather data.' });

@@ -1,9 +1,9 @@
-export default function WeatherInfo({ temperature }) {
+export default function WeatherInfo({ currentTemp }) {
     return (
         <div>
             <h2>Current Temperature</h2>
-            {temperature !== null ? (
-                <p>{temperature}°F</p>
+            {currentTemp !== null ? (
+                <p>{currentTemp}°F</p>
             ) : (
                 <p>Loading temperature data...</p>
             )}

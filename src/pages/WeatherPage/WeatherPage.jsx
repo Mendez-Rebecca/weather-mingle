@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 
-const getTimelineURL = "https://api.tomorrow.io/v4/timelines";
+const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 
 export default function WeatherPage() {
-    const [temperature, setTemperature] = useState(null);
+    const [currentTemp, setCurrentTemp] = useState(null);
     const [location, setLocation] = useState({ latitude: null, longitude: null });
 
     const APIKey = process.env.REACT_APP_API_KEY;
@@ -32,18 +32,13 @@ export default function WeatherPage() {
     }, []);
 
     useEffect(() => {
-        if (location.latitude && location.longitude) {
-            fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&fields=temperature&timesteps=1h&units=metric&apikey=${APIKey}`)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error(`Request failed with status: ${response.status}`);
-                    }
-                    return response.json();
+        if (location.latitude !== null && location.longitude !== null) {
+            fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    setCurrentTemp(data.timelines.hourly[0].values.temperature);
                 })
-                .then((data) => {
-                    setTemperature(data.temperature);
-                })
-                .catch((error) => {
+                .catch(error => {
                     console.error("Error fetching weather data:", error);
                 });
         }
@@ -52,7 +47,7 @@ export default function WeatherPage() {
     return (
         <div>
             <h1>Weather App</h1>
-            <WeatherInfo temperature={temperature} />
+            <WeatherInfo currentTemp={currentTemp} />
         </div>
     );
 };
