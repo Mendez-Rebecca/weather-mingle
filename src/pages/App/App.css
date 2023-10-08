@@ -46,6 +46,15 @@ p {
   margin-top: -50px;
 }
 
+.CurrentWeather {
+  display: flex;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: -180px;
+  margin-right: 450px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
