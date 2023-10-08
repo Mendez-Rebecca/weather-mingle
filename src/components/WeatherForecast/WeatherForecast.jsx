@@ -25,14 +25,38 @@ export default function WeatherForecast({ forecast }) {
         7101: 'Hail'
     }
 
-    const weatherCodes = [forecast[6], forecast[7], forecast[8], forecast[9], forecast[10]];
+    const toFahrenheit = (celsius) => {
+        return (celsius * 9 / 5) + 32;
+    }
+
+    const generateForecast = () => {
+        const forecastData = [];
+        for (let i = 6; i <= 10; i++) {
+            const code = forecast[i];
+            const dayIndex = i - 6 + 1;
+
+            const dayForecast = {
+                dayIndex,
+                weatherStatus: weatherStatus[code] || 'Unknown',
+            };
+
+            forecastData.push(dayForecast);
+        }
+        return forecastData;
+    }
+
+    const forecastData = generateForecast();
 
     return (
         <div>
             <h1>Weather Forecast</h1>
             <ul>
-                {weatherCodes.map((code, index) => (
-                    <li key={index}>Day {index + 1}: {weatherStatus[code] || 'Unknown'}</li>
+                {forecastData.map((data, index) => (
+                    <li key={index}>
+                        Day {data.dayIndex}: {data.weatherStatus}{' '}
+                        (High Temp: {toFahrenheit(forecast[11 + index * 2]).toFixed(2)}°F /
+                        Low Temp: {toFahrenheit(forecast[12 + index * 2]).toFixed(2)}°F)
+                    </li>
                 ))}
             </ul>
         </div>

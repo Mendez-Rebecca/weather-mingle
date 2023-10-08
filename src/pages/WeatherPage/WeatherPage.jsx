@@ -51,7 +51,17 @@ export default function WeatherPage() {
                         data.timelines.daily[2].values.weatherCodeMax,
                         data.timelines.daily[3].values.weatherCodeMax,
                         data.timelines.daily[4].values.weatherCodeMax,
-                        data.timelines.daily[5].values.weatherCodeMax
+                        data.timelines.daily[5].values.weatherCodeMax,
+                        data.timelines.daily[1].values.temperatureMax,
+                        data.timelines.daily[1].values.temperatureMin,
+                        data.timelines.daily[2].values.temperatureMax,
+                        data.timelines.daily[2].values.temperatureMin,
+                        data.timelines.daily[3].values.temperatureMax,
+                        data.timelines.daily[3].values.temperatureMin,
+                        data.timelines.daily[4].values.temperatureMax,
+                        data.timelines.daily[4].values.temperatureMin,
+                        data.timelines.daily[5].values.temperatureMax,
+                        data.timelines.daily[5].values.temperatureMin
                     ])
                 })
                 .catch(error => {
