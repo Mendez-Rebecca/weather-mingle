@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import CurrentTemp from '../../components/CurrentTemp/CurrentTemp';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
@@ -47,7 +48,8 @@ export default function WeatherPage() {
     return (
         <div>
             <h1>Weather App</h1>
-            <WeatherInfo currentTemp={currentTemp} />
+            <CurrentTemp currentTemp={currentTemp} />
+            <WeatherInfo />
         </div>
     );
 };
