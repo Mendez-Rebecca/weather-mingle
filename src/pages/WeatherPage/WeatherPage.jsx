@@ -5,13 +5,16 @@ import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
+const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
 
 export default function WeatherPage() {
     const [currentTemp, setCurrentTemp] = useState(null);
     const [location, setLocation] = useState({ latitude: null, longitude: null });
     const [weatherData, setWeatherData] = useState([]);
+    const [userAddress, setUserAddress] = useState(null);
 
     const APIKey = process.env.REACT_APP_API_KEY;
+    const googleAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
     const userLocation = () => {
         if (navigator.geolocation) {
@@ -31,16 +34,34 @@ export default function WeatherPage() {
         }
     };
 
+    const fetchUserAddress = () => {
+        if (location.latitude !== null && location.longitude !== null) {
+            fetch(`${googleURL}=${location.latitude},${location.longitude}&key=${googleAPIKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const results = data.results[0];
+                    const locality = results.address_components[3].long_name;
+                    const state = results.address_components[5].long_name;
+
+                    const fullAddress = `${locality}, ${state}`;
+                    setUserAddress(fullAddress);
+                })
+                .catch(error => {
+                    console.error("Error fetching user address:", error);
+                });
+        }
+    };
+
     useEffect(() => {
         userLocation();
     }, []);
 
     useEffect(() => {
         if (location.latitude !== null && location.longitude !== null) {
+            fetchUserAddress();
             fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     setCurrentTemp(data.timelines.hourly[0].values.temperature);
                     setWeatherData([
                         data.timelines.hourly[0].values.humidity,
@@ -77,6 +98,7 @@ export default function WeatherPage() {
     return (
         <div>
             <h1>Weather App</h1>
+            <p>User's Location: {userAddress}</p>
             <CurrentTemp currentTemp={currentTemp} />
             <HiLoTemp temps={weatherData} />
             <WeatherInfo weatherData={weatherData} />

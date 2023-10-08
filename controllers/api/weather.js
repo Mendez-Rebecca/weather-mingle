@@ -1,7 +1,7 @@
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 const APIkey = process.env.REACT_APP_API_KEY;
-const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
+const getTimelineURL = 'https://api.tomorrow.io/v4/weather/forecast';
 
 module.exports = {
     index
