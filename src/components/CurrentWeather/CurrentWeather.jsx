@@ -43,11 +43,13 @@ export default function CurrentWeather({ currentWeather }) {
     useEffect(() => {
         let backgroundImage;
         let backgroundColor;
+        let windowColor;
 
         switch (weatherCondition) {
             case 'Sunny':
                 backgroundImage = `url(${sunnyBackground})`;
                 backgroundColor = '#EAB269';
+                windowColor = 'rgba(78, 74, 57, 0.5)';
                 break;
             case 'Mostly Clear':
                 backgroundImage = `url(${mostlyClearBackground})`;
@@ -84,16 +86,23 @@ export default function CurrentWeather({ currentWeather }) {
                 backgroundImage = `url(${rainBackground})`;
         }
 
-        const container = document.querySelector('.BackgroundContainer');
+        const backgroundContainer = document.querySelector('.BackgroundContainer');
+        const forecastContainer = document.querySelector('.ForecastContainer');
+        const weatherInfoContainer = document.querySelector('.WeatherInfoContainer');
 
-        if (container) {
-            container.style.backgroundImage = backgroundImage;
-            container.style.backgroundColor = backgroundColor;
-            container.style.backgroundRepeat = 'no-repeat';
-            container.style.backgroundPosition = 'center center';
-            container.style.backgroundAttachment = 'fixed';
-            container.style.backgroundSize = '70%';
-            container.style.borderRadius = '20px';
+        if (backgroundContainer) {
+            backgroundContainer.style.backgroundImage = backgroundImage;
+            backgroundContainer.style.backgroundColor = backgroundColor;
+            backgroundContainer.style.backgroundRepeat = 'no-repeat';
+            backgroundContainer.style.backgroundPosition = 'center center';
+            backgroundContainer.style.backgroundAttachment = 'fixed';
+            backgroundContainer.style.backgroundSize = '70%';
+            backgroundContainer.style.borderRadius = '20px';
+        }
+
+        if (forecastContainer && weatherInfoContainer) {
+            forecastContainer.style.backgroundColor = windowColor;
+            weatherInfoContainer.style.backgroundColor = windowColor;
         }
         document.body.style.backgroundColor = backgroundColor;
     }, [weatherCondition]);
