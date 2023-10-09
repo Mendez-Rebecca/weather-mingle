@@ -39,6 +39,12 @@ h2 {
   color: lightgray;
 }
 
+body {
+  background-image: url(../../images/lightning_bg.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
 .Location {
   display: flex;
   justify-content: flex-start;
