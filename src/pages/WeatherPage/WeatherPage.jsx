@@ -64,6 +64,7 @@ export default function WeatherPage() {
             fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data)
                     setCurrentTemp(data.timelines.hourly[0].values.temperature);
                     setWeatherData([
                         data.timelines.hourly[0].values.humidity,
@@ -100,15 +101,17 @@ export default function WeatherPage() {
 
     return (
         <div className='WeatherPage'>
-            <div className='LocationContainer'>
-                <img src={pindrop} />
-                <p className='Location'>{userAddress}</p>
+            <div className='BackgroundContainer'>
+                <div className='LocationContainer'>
+                    <img src={pindrop} />
+                    <p className='Location'>{userAddress}</p>
+                </div>
+                <CurrentTemp currentTemp={currentTemp} />
+                <CurrentWeather currentWeather={weatherData} />
+                <HiLoTemp temps={weatherData} />
+                <WeatherInfo weatherData={weatherData} />
+                <WeatherForecast forecast={weatherData} />
             </div>
-            <CurrentTemp currentTemp={currentTemp} />
-            <CurrentWeather currentWeather={weatherData} />
-            <HiLoTemp temps={weatherData} />
-            <WeatherInfo weatherData={weatherData} />
-            <WeatherForecast forecast={weatherData} />
         </div>
     );
 };

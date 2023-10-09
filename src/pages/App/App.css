@@ -1,11 +1,16 @@
 body,
 html {
   background-color: #8a63a5;
+}
+
+.BackgroundContainer {
+  background-color: #8a63a5;
   background-image: url(../../images/lightning_bg.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: 70%;
+  border-radius: 20px;
 }
 
 .App {

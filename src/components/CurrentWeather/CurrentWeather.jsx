@@ -42,10 +42,12 @@ export default function CurrentWeather({ currentWeather }) {
 
     useEffect(() => {
         let backgroundImage;
+        let backgroundColor;
 
         switch (weatherCondition) {
             case 'Sunny':
                 backgroundImage = `url(${sunnyBackground})`;
+                backgroundColor = '#EAB269';
                 break;
             case 'Mostly Clear':
                 backgroundImage = `url(${mostlyClearBackground})`;
@@ -67,6 +69,7 @@ export default function CurrentWeather({ currentWeather }) {
                 break;
             case 'Snow':
                 backgroundImage = `url(${snowBackground})`;
+                backgroundColor = '#221E20';
                 break;
             case 'Fog':
                 backgroundImage = `url(${fogBackground})`;
@@ -81,7 +84,18 @@ export default function CurrentWeather({ currentWeather }) {
                 backgroundImage = `url(${rainBackground})`;
         }
 
-        document.body.style.backgroundImage = backgroundImage;
+        const container = document.querySelector('.BackgroundContainer');
+
+        if (container) {
+            container.style.backgroundImage = backgroundImage;
+            container.style.backgroundColor = backgroundColor;
+            container.style.backgroundRepeat = 'no-repeat';
+            container.style.backgroundPosition = 'center center';
+            container.style.backgroundAttachment = 'fixed';
+            container.style.backgroundSize = '70%';
+            container.style.borderRadius = '20px';
+        }
+        document.body.style.backgroundColor = backgroundColor;
     }, [weatherCondition]);
 
     return (
