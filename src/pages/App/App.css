@@ -17,10 +17,26 @@ h2 {
 
 .Nav {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
   align-items: center;
-  margin-right: 5vmin;
-  margin-top: 5vmin;
+  justify-content: center;
+  height: 100%;
+  margin-left: 60vmin;
+}
+
+.Nav span {
+  margin-right: 10px;
+  color: white;
+}
+
+.link {
+  font-size: 12px;
+  color: grey;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: lightgray;
 }
 
 .Location {
