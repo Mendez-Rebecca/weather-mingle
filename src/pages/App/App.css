@@ -55,6 +55,22 @@ p {
   margin-right: 450px;
 }
 
+.TempContainer {
+  display: grid;
+  margin-right: 750px;
+}
+
+.HiTemp p,
+.LoTemp p {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.LoTemp {
+  margin-left: 180px;
+  margin-top: -103px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
