@@ -49,38 +49,57 @@ export default function CurrentWeather({ currentWeather }) {
             case 'Sunny':
                 backgroundImage = `url(${sunnyBackground})`;
                 backgroundColor = '#EAB269';
-                windowColor = 'rgba(78, 74, 57, 0.5)';
+                windowColor = 'rgba(154, 146, 110, 0.7)';
                 break;
             case 'Mostly Clear':
                 backgroundImage = `url(${mostlyClearBackground})`;
+                backgroundColor = '#8F9FA6';
+                windowColor = 'rgb(143, 159, 166, 0.7)';
                 break;
             case 'Partly Cloudy':
                 backgroundImage = `url(${partlyCloudyBackground})`;
+                backgroundColor = '#B7B5B2';
+                windowColor = 'rgb(131, 130, 128, 0.7)';
                 break;
             case 'Mostly Cloudy':
                 backgroundImage = `url(${mostlyCloudyBackground})`;
+                backgroundColor = '#55666E';
+                windowColor = 'rgb(85, 102, 110, 0.7)';
                 break;
             case 'Cloudy':
                 backgroundImage = `url(${cloudyBackground})`;
+                backgroundColor = '#364247';
+                windowColor = 'rgb(54, 66, 71, 0.7)';
                 break;
             case 'Thunderstorms':
                 backgroundImage = `url(${thunderstormsBackground})`;
+                backgroundColor = '#8a63a5'
+                windowColor = 'rgba(124, 110, 154, 0.7)';
                 break;
             case 'Rain':
                 backgroundImage = `url(${rainBackground})`;
+                backgroundColor = '#788584';
+                windowColor = 'rgb(120, 133, 132, 0.7)';
                 break;
             case 'Snow':
                 backgroundImage = `url(${snowBackground})`;
-                backgroundColor = '#221E20';
+                backgroundColor = '#364247';
+                windowColor = 'rgb(34, 30, 32, 0.7)';
                 break;
             case 'Fog':
                 backgroundImage = `url(${fogBackground})`;
+                backgroundColor = '#899189';
+                windowColor = 'rgb(137, 145, 137, 0.7)';
                 break;
             case 'Freezing Rain':
                 backgroundImage = `url(${freezingRainBackground})`;
+                backgroundColor = '#9393A5';
+                windowColor = 'rgb(147, 147, 165, 0.7)';
                 break;
             case 'Hail':
                 backgroundImage = `url(${hailBackground})`;
+                backgroundColor = '#536512';
+                windowColor = 'rgb(83, 101, 18, 0.7)';
                 break;
             default:
                 backgroundImage = `url(${rainBackground})`;
