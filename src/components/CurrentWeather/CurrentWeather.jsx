@@ -1,3 +1,16 @@
+import { useEffect } from 'react';
+import sunnyBackground from '../../images/sunny_bg.png'
+import mostlyClearBackground from '../../images/mostly_clear_bg.png'
+import partlyCloudyBackground from '../../images/partly_cloudy_bg.png'
+import mostlyCloudyBackground from '../../images/mostly_cloudy_bg.png'
+import cloudyBackground from '../../images/cloudy_bg.png'
+import thunderstormsBackground from '../../images/lightning_bg.png'
+import rainBackground from '../../images/rain_bg.png'
+import snowBackground from '../../images/snow_bg.png'
+import fogBackground from '../../images/fog_bg.png'
+import freezingRainBackground from '../../images/freezing_rain_bg.png'
+import hailBackground from '../../images/hail_bg.png'
+
 export default function CurrentWeather({ currentWeather }) {
     const weatherStatus = {
         1000: 'Sunny',
@@ -26,6 +39,50 @@ export default function CurrentWeather({ currentWeather }) {
     }
 
     const weatherCondition = weatherStatus[currentWeather[23]] || 'Unknown';
+
+    useEffect(() => {
+        let backgroundImage;
+
+        switch (weatherCondition) {
+            case 'Sunny':
+                backgroundImage = `url(${sunnyBackground})`;
+                break;
+            case 'Mostly Clear':
+                backgroundImage = `url(${mostlyClearBackground})`;
+                break;
+            case 'Partly Cloudy':
+                backgroundImage = `url(${partlyCloudyBackground})`;
+                break;
+            case 'Mostly Cloudy':
+                backgroundImage = `url(${mostlyCloudyBackground})`;
+                break;
+            case 'Cloudy':
+                backgroundImage = `url(${cloudyBackground})`;
+                break;
+            case 'Thunderstorms':
+                backgroundImage = `url(${thunderstormsBackground})`;
+                break;
+            case 'Rain':
+                backgroundImage = `url(${rainBackground})`;
+                break;
+            case 'Snow':
+                backgroundImage = `url(${snowBackground})`;
+                break;
+            case 'Fog':
+                backgroundImage = `url(${fogBackground})`;
+                break;
+            case 'Freezing Rain':
+                backgroundImage = `url(${freezingRainBackground})`;
+                break;
+            case 'Hail':
+                backgroundImage = `url(${hailBackground})`;
+                break;
+            default:
+                backgroundImage = `url(${rainBackground})`;
+        }
+
+        document.body.style.backgroundImage = backgroundImage;
+    }, [weatherCondition]);
 
     return (
         <div className="CurrentWeather">

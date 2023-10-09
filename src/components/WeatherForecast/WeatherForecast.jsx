@@ -9,6 +9,17 @@ import snow from '../../images/snow.png';
 import fog from '../../images/fog.png';
 import freezingRain from '../../images/freezing_rain.png';
 import hail from '../../images/hail.png';
+import sunnyBackground from '../../images/sunny_bg.png'
+import mostlyClearBackground from '../../images/mostly_clear_bg.png'
+import partlyCloudyBackground from '../../images/sunny_bg.png'
+import mostlyCloudyBackground from '../../images/sunny_bg.png'
+import cloudyBackground from '../../images/sunny_bg.png'
+import thunderstormsBackground from '../../images/sunny_bg.png'
+import rainBackground from '../../images/sunny_bg.png'
+import snowBackground from '../../images/sunny_bg.png'
+import fogBackground from '../../images/sunny_bg.png'
+import freezingRainBackground from '../../images/sunny_bg.png'
+import hailBackground from '../../images/sunny_bg.png'
 
 export default function WeatherForecast({ forecast }) {
     const weatherStatus = {
