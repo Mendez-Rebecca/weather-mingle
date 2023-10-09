@@ -7,6 +7,10 @@ p {
   color: white;
 }
 
+h2 {
+  color: white;
+}
+
 .App {
   text-align: center;
 }
@@ -109,14 +113,16 @@ td {
   background-color: rgba(124, 110, 154, 0.5);
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 10px;
   margin-left: 10vmin;
   margin-top: 2vmin;
 }
 
-.ForecastContainer table {
-  border-collapse: collapse;
-  width: 30%;
+.ForecastContainer img {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 th,

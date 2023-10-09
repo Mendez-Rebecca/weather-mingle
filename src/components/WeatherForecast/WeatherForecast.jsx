@@ -1,3 +1,15 @@
+import sunny from '../../images/sunny.png';
+import mostlyClear from '../../images/mostly_clear.png';
+import partlyCloudy from '../../images/partly_cloudy.png';
+import mostlyCloudy from '../../images/mostly_cloudy.png';
+import cloudy from '../../images/cloudy.png';
+import thunderstorms from '../../images/thunderstorms.png';
+import rain from '../../images/rainy.png';
+import snow from '../../images/snow.png';
+import fog from '../../images/fog.png';
+import freezingRain from '../../images/freezing_rain.png';
+import hail from '../../images/hail.png';
+
 export default function WeatherForecast({ forecast }) {
     const weatherStatus = {
         1000: 'Sunny',
@@ -60,7 +72,74 @@ export default function WeatherForecast({ forecast }) {
                 <tbody>
                     {forecastData.map((data, index) => (
                         <tr key={index}>
-                            <td>{data.weatherStatus}</td>
+                            <td>
+                                {data.weatherStatus === 'Sunny' && (
+                                    <>
+                                        <img src={sunny} alt="Sunny" />
+                                        Sunny
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Mostly Clear' && (
+                                    <>
+                                        <img src={mostlyClear} alt="Mostly Clear" />
+                                        Mostly Clear
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Partly Cloudy' && (
+                                    <>
+                                        <img src={partlyCloudy} alt="Partly Cloudy" />
+                                        Partly Cloudy
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Mostly Cloudy' && (
+                                    <>
+                                        <img src={mostlyCloudy} alt="Mostly Cloudy" />
+                                        Mostly Cloudy
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Cloudy' && (
+                                    <>
+                                        <img src={cloudy} alt="Cloudy" />
+                                        Cloudy
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Thunderstorms' && (
+                                    <>
+                                        <img src={thunderstorms} alt="Thunderstorms" />
+                                        Thunderstorms
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Rain' && (
+                                    <>
+                                        <img src={rain} alt="Rain" />
+                                        Rain
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Snow' && (
+                                    <>
+                                        <img src={snow} alt="Snow" />
+                                        Snow
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Fog' && (
+                                    <>
+                                        <img src={fog} alt="Fog" />
+                                        Fog
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Freezing Rain' && (
+                                    <>
+                                        <img src={freezingRain} alt="Freezing Rain" />
+                                        Freezing Rain
+                                    </>
+                                )}
+                                {data.weatherStatus === 'Hail' && (
+                                    <>
+                                        <img src={hail} alt="Hail" />
+                                        Hail
+                                    </>
+                                )}
+                            </td>
                             <td>{toFahrenheit(forecast[11 + index * 2]).toFixed(0)}°F</td>
                             <td>{toFahrenheit(forecast[12 + index * 2]).toFixed(0)}°F</td>
                         </tr>
