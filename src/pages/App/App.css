@@ -58,6 +58,8 @@ p {
 .TempContainer {
   display: grid;
   margin-right: 750px;
+  margin-bottom: -10px;
+  margin-top: -20px;
 }
 
 .HiTemp p,
@@ -69,6 +71,34 @@ p {
 .LoTemp {
   margin-left: 180px;
   margin-top: -103px;
+}
+
+.WeatherInfoContainer {
+  background-color: rgba(124, 110, 154, 0.5);
+  padding: 20px;
+  display: inline-block;
+  margin-right: 630px;
+  margin-top: 40px;
+}
+
+.WeatherInfoTable {
+  border-collapse: separate;
+}
+
+.WeatherInfoTable th,
+.WeatherInfoTable td {
+  padding: 10px;
+
+}
+
+.Label {
+  color: white;
+  text-align: center;
+  margin-right: 20px;
+}
+
+td {
+  color: white;
 }
 
 .App-logo {
