@@ -5,7 +5,6 @@ import HiLoTemp from '../../components/HiLoTemp/HiLoTemp';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 import pindrop from '../../images/pindrop.png';
-import lightning_bg from '../../images/lightning_bg.png';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
@@ -88,8 +87,8 @@ export default function WeatherPage() {
                         data.timelines.daily[4].values.temperatureMin,
                         data.timelines.daily[5].values.temperatureMax,
                         data.timelines.daily[5].values.temperatureMin,
-                        data.timelines.daily[0].values.temperatureMax, /* 21 */
-                        data.timelines.daily[0].values.temperatureMin,  /* 22 */
+                        data.timelines.daily[0].values.temperatureMax,
+                        data.timelines.daily[0].values.temperatureMin,
                         data.timelines.hourly[0].values.weatherCode
                     ])
                 })
