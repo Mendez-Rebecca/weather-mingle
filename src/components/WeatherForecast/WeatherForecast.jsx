@@ -48,17 +48,25 @@ export default function WeatherForecast({ forecast }) {
     const forecastData = generateForecast();
 
     return (
-        <div>
-            <h1>Weather Forecast</h1>
-            <ul>
-                {forecastData.map((data, index) => (
-                    <li key={index}>
-                        Day {data.dayIndex}: {data.weatherStatus}{' '}
-                        (High Temp: {toFahrenheit(forecast[11 + index * 2]).toFixed(0)}°F /
-                        Low Temp: {toFahrenheit(forecast[12 + index * 2]).toFixed(0)}°F)
-                    </li>
-                ))}
-            </ul>
+        <div className="ForecastContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Forecast</th>
+                        <th>Hi</th>
+                        <th>Lo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {forecastData.map((data, index) => (
+                        <tr key={index}>
+                            <td>{data.weatherStatus}</td>
+                            <td>{toFahrenheit(forecast[11 + index * 2]).toFixed(0)}°F</td>
+                            <td>{toFahrenheit(forecast[12 + index * 2]).toFixed(0)}°F</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
-    )
+    );
 }
