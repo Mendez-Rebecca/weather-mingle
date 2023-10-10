@@ -5,6 +5,7 @@ import HiLoTemp from '../../components/HiLoTemp/HiLoTemp';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 import pindrop from '../../images/pindrop.png';
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
@@ -14,6 +15,7 @@ export default function WeatherPage() {
     const [location, setLocation] = useState({ latitude: null, longitude: null });
     const [weatherData, setWeatherData] = useState([]);
     const [userAddress, setUserAddress] = useState(null);
+    const [contentLoading, setContentLoading] = useState(true);
 
     const APIKey = process.env.REACT_APP_API_KEY;
     const googleAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -92,15 +94,24 @@ export default function WeatherPage() {
                         data.timelines.daily[0].values.temperatureMin,
                         data.timelines.hourly[0].values.weatherCode
                     ])
+                    setContentLoading(false);
+                    setTimeout(() => {
+                        setContentLoading(false);
+                    }, 5000);
                 })
                 .catch(error => {
                     console.error("Error fetching weather data:", error);
+                    setContentLoading(false);
+                    setTimeout(() => {
+                        setContentLoading(false);
+                    }, 5000);
                 });
         }
     }, [location]);
 
     return (
         <div className='WeatherPage'>
+            {contentLoading && <LoadingScreen />}
             <div className='BackgroundContainer'>
                 <div className='LocationContainer'>
                     <img src={pindrop} />
