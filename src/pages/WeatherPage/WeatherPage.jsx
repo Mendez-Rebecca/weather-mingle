@@ -67,7 +67,6 @@ export default function WeatherPage() {
                 fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         setCurrentTemp(data.timelines.hourly[0].values.temperature);
                         setWeatherData([
                             data.timelines.hourly[0].values.humidity,
