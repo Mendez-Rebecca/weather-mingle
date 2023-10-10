@@ -63,49 +63,45 @@ export default function WeatherPage() {
     useEffect(() => {
         if (location.latitude !== null && location.longitude !== null) {
             fetchUserAddress();
-            fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    setCurrentTemp(data.timelines.hourly[0].values.temperature);
-                    setWeatherData([
-                        data.timelines.hourly[0].values.humidity,
-                        data.timelines.hourly[0].values.pressureSurfaceLevel,
-                        data.timelines.hourly[0].values.visibility,
-                        data.timelines.hourly[0].values.windSpeed,
-                        data.timelines.hourly[0].values.dewPoint,
-                        data.timelines.hourly[0].values.uvIndex,
-                        data.timelines.daily[1].values.weatherCodeMax,
-                        data.timelines.daily[2].values.weatherCodeMax,
-                        data.timelines.daily[3].values.weatherCodeMax,
-                        data.timelines.daily[4].values.weatherCodeMax,
-                        data.timelines.daily[5].values.weatherCodeMax,
-                        data.timelines.daily[1].values.temperatureMax,
-                        data.timelines.daily[1].values.temperatureMin,
-                        data.timelines.daily[2].values.temperatureMax,
-                        data.timelines.daily[2].values.temperatureMin,
-                        data.timelines.daily[3].values.temperatureMax,
-                        data.timelines.daily[3].values.temperatureMin,
-                        data.timelines.daily[4].values.temperatureMax,
-                        data.timelines.daily[4].values.temperatureMin,
-                        data.timelines.daily[5].values.temperatureMax,
-                        data.timelines.daily[5].values.temperatureMin,
-                        data.timelines.daily[0].values.temperatureMax,
-                        data.timelines.daily[0].values.temperatureMin,
-                        data.timelines.hourly[0].values.weatherCode
-                    ])
-                    setContentLoading(false);
-                    setTimeout(() => {
+            setTimeout(() => {
+                fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        setCurrentTemp(data.timelines.hourly[0].values.temperature);
+                        setWeatherData([
+                            data.timelines.hourly[0].values.humidity,
+                            data.timelines.hourly[0].values.pressureSurfaceLevel,
+                            data.timelines.hourly[0].values.visibility,
+                            data.timelines.hourly[0].values.windSpeed,
+                            data.timelines.hourly[0].values.dewPoint,
+                            data.timelines.hourly[0].values.uvIndex,
+                            data.timelines.daily[1].values.weatherCodeMax,
+                            data.timelines.daily[2].values.weatherCodeMax,
+                            data.timelines.daily[3].values.weatherCodeMax,
+                            data.timelines.daily[4].values.weatherCodeMax,
+                            data.timelines.daily[5].values.weatherCodeMax,
+                            data.timelines.daily[1].values.temperatureMax,
+                            data.timelines.daily[1].values.temperatureMin,
+                            data.timelines.daily[2].values.temperatureMax,
+                            data.timelines.daily[2].values.temperatureMin,
+                            data.timelines.daily[3].values.temperatureMax,
+                            data.timelines.daily[3].values.temperatureMin,
+                            data.timelines.daily[4].values.temperatureMax,
+                            data.timelines.daily[4].values.temperatureMin,
+                            data.timelines.daily[5].values.temperatureMax,
+                            data.timelines.daily[5].values.temperatureMin,
+                            data.timelines.daily[0].values.temperatureMax,
+                            data.timelines.daily[0].values.temperatureMin,
+                            data.timelines.hourly[0].values.weatherCode
+                        ])
                         setContentLoading(false);
-                    }, 5000);
-                })
-                .catch(error => {
-                    console.error("Error fetching weather data:", error);
-                    setContentLoading(false);
-                    setTimeout(() => {
+                    })
+                    .catch(error => {
+                        console.error("Error fetching weather data:", error);
                         setContentLoading(false);
-                    }, 5000);
-                });
+                    });
+            }, 3000);
         }
     }, [location]);
 

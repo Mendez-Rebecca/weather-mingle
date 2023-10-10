@@ -179,6 +179,7 @@ th {
   font-size: 24px;
   font-weight: bold;
   color: black;
+  animation: wavyText 1.5s infinite;
 }
 
 */ .App-logo {
@@ -214,5 +215,19 @@ th {
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes wavyText {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
