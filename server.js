@@ -2,8 +2,6 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const http = require('http');
-const { Server } = require('socket.io');
 // Always require and configure near the top
 require('dotenv').config();
 // Connect to the database
@@ -27,15 +25,6 @@ const port = process.env.PORT || 3001;
 
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
-
-const server = http.createServer(app);
-
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000", // Replace with your client's URL
-    methods: ["GET", "POST"],
-  },
-});
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
