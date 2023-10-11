@@ -24,7 +24,11 @@ export default function Chat({ user }) {
     return (
         <div className={styles.chatWindow}>
             <div className={styles.messages}>
-
+                {chat.messages.map((message, index) => (
+                    <div key={index} className={styles.message}>
+                        <strong>{chat.user.name}: {message}</strong>
+                    </div>
+                ))}
             </div>
             <div className={styles.messageInput}>
                 <input
