@@ -13,6 +13,6 @@ socket.on('update-chat', function (chat) {  //to receive information
 
 //house all the communications I want to make
 /*--- Functions that send messages to the server ---*/
-export function sendChatMessage(msg, chat) {              //to send information
-    socket.emit('chat-message', { msg, chat });
+export function sendChatMessage(msg, chat, user) {              //to send information
+    socket.emit('chat-message', { msg, chat, user });
 }

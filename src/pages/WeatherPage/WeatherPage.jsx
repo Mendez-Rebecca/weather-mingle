@@ -11,7 +11,7 @@ import Chat from '../../components/Chat/Chat';
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
 
-export default function WeatherPage() {
+export default function WeatherPage({ user }) {
     const [currentTemp, setCurrentTemp] = useState(null);
     const [location, setLocation] = useState({ latitude: null, longitude: null });
     const [weatherData, setWeatherData] = useState([]);
@@ -118,7 +118,7 @@ export default function WeatherPage() {
                 <HiLoTemp temps={weatherData} />
                 <WeatherInfo weatherData={weatherData} />
                 <WeatherForecast forecast={weatherData} />
-                <Chat />
+                <Chat user={user} />
             </div>
         </div>
     );

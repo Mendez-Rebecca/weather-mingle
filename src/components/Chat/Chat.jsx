@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import * as socket from '../../socket';
 import styles from './Chat.module.css';
 
-export default function Chat() {
+export default function Chat({ user }) {
     const [chat, setChat] = useState({
         name: 'Chatroom',
-        messages: []
+        messages: [],
+        user: user
     });
     const [messageInput, setMessageInput] = useState('');
 
@@ -15,7 +16,7 @@ export default function Chat() {
 
     const sendMessage = () => {
         if (messageInput.trim() !== '') {
-            socket.sendChatMessage(messageInput, chat);
+            socket.sendChatMessage(messageInput, chat, user);
             setMessageInput('');
         }
     };
