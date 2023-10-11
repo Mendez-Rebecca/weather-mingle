@@ -9,7 +9,7 @@ import WeatherPage from '../WeatherPage/WeatherPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-
+  //make a useEffect that handles sending a message used in socket.js
   return (
     <main className="App">
       {user ?

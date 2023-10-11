@@ -6,6 +6,7 @@ import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import WeatherForecast from '../../components/WeatherForecast/WeatherForecast';
 import pindrop from '../../images/pindrop.png';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import Chat from '../../components/Chat/Chat';
 
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
@@ -67,7 +68,6 @@ export default function WeatherPage() {
                 fetch(`${getTimelineURL}?location=${location.latitude},${location.longitude}&apikey=${APIKey}`)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         setCurrentTemp(data.timelines.hourly[0].values.temperature);
                         setWeatherData([
                             data.timelines.hourly[0].values.humidity,
@@ -118,6 +118,7 @@ export default function WeatherPage() {
                 <HiLoTemp temps={weatherData} />
                 <WeatherInfo weatherData={weatherData} />
                 <WeatherForecast forecast={weatherData} />
+                <Chat />
             </div>
         </div>
     );
