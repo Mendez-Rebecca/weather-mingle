@@ -1,8 +1,42 @@
-import { io } from 'socket.io-client';
+import * as tokenService from './services/tokenService';
 
-// "undefined" means the URL will be computed from the `window.location` object
-const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://localhost:4000';
+const socket = window.io();
+let setChat = null;
 
-export const socket = io(URL, {
-    autoConnect: false
+/*--- This is so that this module can setState on App ---*/
+export function registerSetGame(fn) {
+    setChat = fn;
+}
+
+/*--- Listeners for messages from server ---*/
+socket.on('update-game', function (game) {
+    setChat(game);
 });
+
+
+/*--- Functions that send messages to the server ---*/
+export function getActive() {
+    socket.emit('get-active', tokenService.getToken());
+}
+
+export function newChat() {
+    socket.emit('new-chat', tokenService.getToken());
+}
+
+export function joinChat(chatId) {
+    socket.emit('join-chat', {
+        token: tokenService.getToken(),
+        chatId
+    });
+}
+
+// export function move(idx) {
+//     socket.emit('move', {
+//         token: tokenService.getToken(),
+//         idx
+//     });
+// }
+
+export function logout() {
+    socket.emit('logout', tokenService.getToken());
+}

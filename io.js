@@ -49,16 +49,16 @@ function init(http) {
             io.to(chat._id.toString()).emit('update-chat', chat);
         });
 
-        socket.on('move', async function ({ token, idx }) {
-            const user = await validateToken(token);
-            if (!user) return;
-            let chat = findChatInMemory(user);
-            if (!chat.board[idx]) chat.board[idx] = chat.turn;
-            chat.winner = getWinner(chat.board);
-            if (!chat.winner) chat.turn *= -1;
-            await chat.save();
-            io.to(chat._id.toString()).emit('update-chat', chat);
-        });
+        // socket.on('move', async function ({ token, idx }) {
+        //     const user = await validateToken(token);
+        //     if (!user) return;
+        //     let chat = findChatInMemory(user);
+        //     if (!chat.board[idx]) chat.board[idx] = chat.turn;
+        //     chat.winner = getWinner(chat.board);
+        //     if (!chat.winner) chat.turn *= -1;
+        //     await chat.save();
+        //     io.to(chat._id.toString()).emit('update-chat', chat);
+        // });
 
         socket.on('logout', async function (token) {
             const user = await validateToken(token);

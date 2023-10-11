@@ -34,10 +34,10 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(port, function () {
-  console.log(`Express app running on port ${port}`);
-});
-
-// http.listen(port, function () {
-//   console.log(`Listening on port ${port}`);
+// app.listen(port, function () {
+//   console.log(`Express app running on port ${port}`);
 // });
+
+http.listen(port, function () {
+  console.log(`Listening on port ${port}`);
+});

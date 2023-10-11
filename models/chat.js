@@ -32,4 +32,15 @@ const chatSchema = new Schema({
     }
 })
 
+chatSchema.statics.getActiveForUser = function (user) {
+    return this.findOne({ 'chatters.chatterId': user._id });
+}
+
+gameSchema.statics.createForUser = async function (user) {
+    const chat = new this();
+    chat.chatters.push({ name: user.name, chatterId: user._id });
+    await chat.save();
+    return chat;
+}
+
 module.exports = mongoose.model('Chat', chatSchema);
