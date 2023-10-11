@@ -8,6 +8,8 @@ require('dotenv').config();
 require('./config/database');
 
 const app = express();
+const http = require('http').Server(app);
+require('./io').init(http);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -35,3 +37,7 @@ app.get('/*', function (req, res) {
 app.listen(port, function () {
   console.log(`Express app running on port ${port}`);
 });
+
+// http.listen(port, function () {
+//   console.log(`Listening on port ${port}`);
+// });
