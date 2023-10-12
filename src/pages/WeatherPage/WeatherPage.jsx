@@ -8,6 +8,7 @@ import pindrop from '../../images/pindrop.png';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import Chat from '../../components/Chat/Chat';
 
+
 const getTimelineURL = "https://api.tomorrow.io/v4/weather/forecast";
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng";
 

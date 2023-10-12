@@ -6,6 +6,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import LoginPage from '../../components/LoginPage/LoginPage';
 import WeatherPage from '../WeatherPage/WeatherPage';
+import WeatherLogo from '../../components/WeatherLogo/WeatherLogo';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -14,6 +15,7 @@ export default function App() {
     <main className="App">
       {user ?
         <>
+          <WeatherLogo />
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
