@@ -1,10 +1,10 @@
 body,
 html {
-  background-color: #8a63a5;
+  background-color: white;
 }
 
 .BackgroundContainer {
-  background-color: #8a63a5;
+  background-color: white;
   background-image: url(../../images/lightning_bg.png);
   background-repeat: no-repeat;
   background-position: center center;
