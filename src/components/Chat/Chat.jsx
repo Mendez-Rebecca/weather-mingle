@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import * as socket from '../../socket';
-import styles from './Chat.module.css';
 
 export default function Chat({ user }) {
     const [chat, setChat] = useState({
         name: 'Chatroom',
         messages: [],
-        user: user
+        user: user,
     });
     const [messageInput, setMessageInput] = useState('');
+    const [chatOpen, setChatOpen] = useState(false); // Initially set to false
 
     useEffect(function () {
         socket.registerSetChat(setChat);
-    }, [])
+    }, []);
 
     const sendMessage = () => {
         if (messageInput.trim() !== '') {
@@ -22,23 +22,30 @@ export default function Chat({ user }) {
     };
 
     return (
-        <div className={styles.chatWindow}>
-            <div className={styles.messages}>
-                {chat.messages.map((message, index) => (
-                    <div key={index} className={styles.message}>
-                        <strong>{chat.user.name}: {message}</strong>
+        <div className="chatContainer">
+            <button className="minimizeButton" onClick={() => setChatOpen(!chatOpen)}>
+                {chatOpen ? "-" : "+"}
+            </button>
+            {chatOpen && (
+                <div className="chatWindow">
+                    <div className="messages">
+                        {chat.messages.map((message, index) => (
+                            <div key={index} className="message">
+                                <strong>{chat.user.name}: {message}</strong>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <div className={styles.messageInput}>
-                <input
-                    type="text"
-                    value={messageInput}
-                    onChange={(e) => setMessageInput(e.target.value)}
-                    placeholder="Type your message..."
-                />
-                <button onClick={sendMessage}>Send</button>
-            </div>
+                    <div className="messageInput">
+                        <input
+                            type="text"
+                            value={messageInput}
+                            onChange={(e) => setMessageInput(e.target.value)}
+                            placeholder="Type your message..."
+                        />
+                        <button onClick={sendMessage}>Send</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
