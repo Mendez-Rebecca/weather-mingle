@@ -31,7 +31,7 @@ export default function Chat({ user }) {
                     <div className="messages">
                         {chat.messages.map((message, index) => (
                             <div key={index} className="message">
-                                <strong>{chat.user.name}: {message}</strong>
+                                <span className='UserName'>{chat.user.name}:</span> {message}
                             </div>
                         ))}
                     </div>
@@ -40,6 +40,11 @@ export default function Chat({ user }) {
                             type="text"
                             value={messageInput}
                             onChange={(e) => setMessageInput(e.target.value)}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    sendMessage();
+                                }
+                            }}
                             placeholder="Type your message..."
                         />
                         <button onClick={sendMessage}>Send</button>
