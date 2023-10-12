@@ -8,7 +8,7 @@ export default function Chat({ user }) {
         user: user,
     });
     const [messageInput, setMessageInput] = useState('');
-    const [chatOpen, setChatOpen] = useState(false); // Initially set to false
+    const [chatOpen, setChatOpen] = useState(false);
 
     useEffect(function () {
         socket.registerSetChat(setChat);
@@ -30,7 +30,7 @@ export default function Chat({ user }) {
                 <div className="chatWindow">
                     <div className="messages">
                         {chat.messages.map((message, index) => (
-                            <div key={index} className="message">
+                            <div key={index} className={`message ${chat.user.name === user.name ? 'sent' : 'received'}`}>
                                 <span className='UserName'>{chat.user.name}:</span> {message}
                             </div>
                         ))}

@@ -236,8 +236,12 @@ th {
   background-color: #30a5a5;
 }
 
-.UserName {
+.sent .UserName {
   color: red;
+}
+
+.received .UserName {
+  color: blue;
 }
 
 .minimizeButton {
