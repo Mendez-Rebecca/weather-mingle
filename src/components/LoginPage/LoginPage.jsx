@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { login } from '../../utilities/users-service';
+import WeatherMingleLogo from '../../images/WeatherMingleLogo.png';
 
 export default class LoginForm extends Component {
     state = {
@@ -34,13 +35,14 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div>
+                <img src={WeatherMingleLogo} alt="Logo" className='Logo' />
                 <div className="form-container">
                     <form autoComplete="off" onSubmit={this.handleSubmit}>
                         <label>Email</label>
                         <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
                         <label>Password</label>
                         <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-                        <button type="submit">LOGIN</button>
+                        <button type="submit" className="LoginButton">LOGIN</button>
                     </form>
                 </div>
                 <p className="error-message">&nbsp;{this.state.error}</p>

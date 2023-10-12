@@ -281,6 +281,14 @@ th {
   text-decoration: none;
 }
 
+.LoginButton {
+  background-color: #fabc18;
+}
+
+.LoginButton:hover {
+  background-color: #ffcf18;
+}
+
 
 */ .App-logo {
   height: 40vmin;
