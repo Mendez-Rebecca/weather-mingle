@@ -221,6 +221,7 @@ th {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-right: -2px;
 }
 
 .messageInput button {
@@ -258,6 +259,26 @@ th {
   justify-content: center;
   cursor: pointer;
   z-index: 1;
+}
+
+.Logo {
+  width: 50%;
+  height: auto;
+  margin-bottom: -40px;
+}
+
+.LoginPage {
+  background-color: white;
+}
+
+.AccountPrompt {
+  color: black;
+  margin-top: -20px;
+}
+
+.LoginLink {
+  color: #879c9f;
+  text-decoration: none;
 }
 
 

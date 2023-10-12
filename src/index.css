@@ -82,7 +82,7 @@ code {
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--tan-1);
+  background-color: #c9e8ec;
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
 }
@@ -146,12 +146,19 @@ button.btn-xs {
   padding: .4vmin .5vmin;
 }
 
-button:disabled,
-form:invalid button[type="submit"] {
-  background-color: var(--tan-4);
-}
-
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+}
+
+.form-container label {
+  color: black;
+}
+
+.SignUpButton {
+  background-color: #fabc18;
+}
+
+.SignUpButton:hover {
+  background-color: #ffcf18;
 }
