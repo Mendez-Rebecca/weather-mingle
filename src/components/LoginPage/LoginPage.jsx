@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { login } from '../../utilities/users-service';
 import WeatherMingleLogo from '../../images/WeatherMingleLogo.png';
 
@@ -46,6 +47,8 @@ export default class LoginForm extends Component {
                     </form>
                 </div>
                 <p className="error-message">&nbsp;{this.state.error}</p>
+                <p className="AccountPrompt">Already have an account?</p>
+                <Link to={'/'} className="LoginLink">Sign Up</Link>
             </div>
         );
     }
