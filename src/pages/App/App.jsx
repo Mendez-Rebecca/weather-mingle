@@ -24,7 +24,7 @@ export default function App() {
         </>
         :
         <Routes>
-          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route path="/" element={<LoginPage setUser={setUser} />} />
           <Route path="/*" element={<AuthPage setUser={setUser} />} />
         </Routes>
       }
