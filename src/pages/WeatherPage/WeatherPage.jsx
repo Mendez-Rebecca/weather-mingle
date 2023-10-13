@@ -21,6 +21,7 @@ export default function WeatherPage({ user }) {
 
     const APIKey = process.env.REACT_APP_API_KEY;
     const googleAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+    // console.log(APIKey)
 
     const userLocation = () => {
         if (navigator.geolocation) {
