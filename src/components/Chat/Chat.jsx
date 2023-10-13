@@ -35,7 +35,8 @@ export default function Chat({ user }) {
                     <div className="messages">
                         {chat.messages.map((message, index) => (
                             <div key={index} className={`message ${message.sender === user.name ? 'sent' : 'received'}`}>
-                                <span className='UserName'>{message.sender}:</span> {message.text}
+                                <span className='UserName'>
+                                    <strong>{message.sender}</strong>:</span> {message.text}
                             </div>
                         ))}
                     </div>
