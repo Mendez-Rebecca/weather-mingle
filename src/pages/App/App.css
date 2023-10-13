@@ -3,6 +3,15 @@ html {
   background-color: white;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
 .BackgroundContainer {
   background-color: white;
   background-image: url(../../images/lightning_bg.png);
@@ -11,15 +20,6 @@ html {
   background-attachment: fixed;
   background-size: 70%;
   border-radius: 20px;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
 }
 
 p {
