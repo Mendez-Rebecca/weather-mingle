@@ -47,8 +47,8 @@ export default class LoginForm extends Component {
                     </form>
                 </div>
                 <p className="error-message">&nbsp;{this.state.error}</p>
-                <p className="AccountPrompt">Already have an account?</p>
-                <Link to={'/'} className="LoginLink">Sign Up</Link>
+                <p className="AccountPrompt">Need to sign up?</p>
+                <Link to={'/login'} className="LoginLink">Sign Up</Link>
             </div>
         );
     }

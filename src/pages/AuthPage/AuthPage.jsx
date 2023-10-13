@@ -8,7 +8,7 @@ export default function AuthPage({ setUser }) {
       <img src={WeatherMingleLogo} alt="Logo" className='Logo' />
       <SignUpForm setUser={setUser} />
       <p className="AccountPrompt">Already have an account?</p>
-      <Link to={'/login'} className="LoginLink">Login</Link>
+      <Link to={'/'} className="LoginLink">Login</Link>
     </main>
   );
 }
