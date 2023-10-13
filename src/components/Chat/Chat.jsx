@@ -16,7 +16,11 @@ export default function Chat({ user }) {
 
     const sendMessage = () => {
         if (messageInput.trim() !== '') {
-            socket.sendChatMessage(messageInput, chat, user);
+            const newMessage = {
+                text: messageInput,
+                sender: user.name
+            }
+            socket.sendChatMessage(newMessage, chat, user);
             setMessageInput('');
         }
     };
@@ -30,7 +34,7 @@ export default function Chat({ user }) {
                 <div className="chatWindow">
                     <div className="messages">
                         {chat.messages.map((message, index) => (
-                            <div key={index} className={`message ${chat.user.name === user.name ? 'sent' : 'received'}`}>
+                            <div key={index} className={`message ${message.sender === user.name ? 'sent' : 'received'}`}>
                                 <span className='UserName'>{chat.user.name}:</span> {message}
                             </div>
                         ))}
