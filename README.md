@@ -1,74 +1,62 @@
-# Getting Started with Create React App
+<img src=https://i.imgur.com/GRr1FZt.png width=300px height=300px>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Weather Mingle is a MERN-stack web application designed to display the current weather conditions, temperature and the five day weather forecast for the user's retrieved coordinates. The user is able to create an account, or login if an account is already created. Depending upon the weather conditions will dynamically change the color scheme and background on the user's screen of the overall application. Additionally, any user that is logged in can chat with one another about the weather!
 
-## Available Scripts
+The deployed web application can be found [here](https://weather-mingle-c946f1cbd590.herokuapp.com/login).
 
-In the project directory, you can run:
+## Screenshots
 
-### `npm start`
+<img src=https://i.imgur.com/o8EUof3.png width=600px height=500px>
+<br>
+<br>
+<img src=https://i.imgur.com/XcaosQv.png width=600px height=500px>
+<br>
+<br>
+<img src=https://i.imgur.com/XkGl5ve.png width=600px height=500px>
+<br>
+<br>
+Color schemes and background images change for the following weather conditions:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+***
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Sunny
+* Mostly Clear
+* Partly Cloudy
+* Mostly Cloudy
+* Thunderstorms
+* Rain
+* Snow
+* Fog
+* Freezing Rain
+* Hail
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* MongoDB
+* Express.js
+* React
+* Node.js
 
-### `npm run build`
+## Notable Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Displays the weather and forecast for the user's location
+* Ability to chat with other logged in users
+* Dynamic display of color schemes and background images
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Future Plans
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Add the dates to the weather forecast
+* Chatrooms for specific locations
+* Alter positioning for elements when the window is not fullscreen
 
-### `npm run eject`
+## Credits
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[Figma](https://www.figma.com) was used to create the wireframe for the layout and styling of the web application.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Weather Mingle logo was created with [Canva](https://www.canva.com).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+All background images were AI generated with [GenCraft](https://www.gencraft.com).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Weather Mingle utilizes [Tomorrow.io](https://www.tomorrow.io/) for its third party weather API.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# MERN-Stack Infrastructure
-
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+[Google Maps Platform](https://developers.google.com/maps) provides the API to gather a user's longitude and latitude coordinates based off their device location.
