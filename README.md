@@ -48,6 +48,7 @@ Color schemes and background images change for the following weather conditions:
 * Add the dates to the weather forecast
 * Chatrooms for specific locations
 * Alter positioning for elements when the window is not fullscreen
+* Add conditions to reflect nighttime events
 
 ## Credits
 
