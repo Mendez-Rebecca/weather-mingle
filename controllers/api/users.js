@@ -38,24 +38,13 @@ function checkToken(req, res) {
 }
 
 async function login(req, res) {
-    const { email, password } = req.body;
-
     try {
-        const user = await User.findOne({ where: { email } });
-
-        if (!user) {
-            return res.status(401).json({ error: 'Invalid credentials' });
-        }
-        const passwordMatch = await bcrypt.compare(password, user.password);
-
-        if (!passwordMatch) {
-            return res.status(401).json({ error: 'Invalid credentials' });
-        }
-        const token = createJWT(user);
-
-        res.json(token);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Server error' });
+        const user = await User.findOne({ email: req.body.email })
+        if (!user) throw new Error()
+        const match = await bcrypt.compare(req.body.password, user.password)
+        if (!match) throw new Error()
+        res.json(createJWT(user))
+    } catch {
+        res.status(400).json('Bad Credentials')
     }
 }
